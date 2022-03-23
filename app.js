@@ -1,23 +1,33 @@
-const express = require('express');
-const path = require('path');
+const prismicH = require('@prismicio/helpers');
+const app = require('./config');
+const asyncHandler = require('./utils/async-handler');
+const { client } = require('./prismicConfig');
 
-const app = express();
-const port = 8000;
+const route = app();
+const PORT = route.get('port');
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-app.get('/', (req, res) => {
-  res.render('index', {
-    meta: {
-      data: {
-        title: 'Home',
-        description: 'This is the home page',
-      },
-    },
-  });
+route.listen(PORT, () => {
+  process.stdout.write(`Point your browser to: http://localhost:${PORT}\n`);
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+const prismicAutoPreviewsMiddleware = (req, _res, next) => {
+  client.enableAutoPreviewsFromReq(req);
+  next();
+};
+route.use(prismicAutoPreviewsMiddleware);
+
+// Middleware to connect to inject prismic context
+route.use((req, res, next) => {
+  res.locals.ctx = {
+    prismicH,
+  };
+  next();
 });
+
+// Route for Previews
+route.get(
+  '/',
+  asyncHandler(async (req, res) => {
+    res.render('');
+  })
+);
