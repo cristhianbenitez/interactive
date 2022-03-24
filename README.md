@@ -1,7 +1,13 @@
 # Piperplate
 
 This is a boilerplate for JavaScript projects, writting by me. Since it is annoying having to write this more than once, will do it just once ? aha.
-It uses SCSS, Vanilla JavaScript, Webpack
+It uses:
+-  Express for server side rendering
+-  SASS
+-  Vanilla JS
+-  Webpack
+-  Pugjs as a template engine for fast creation of html
+-  Prismic.io for the Headless CMS
 
 ## Structure
 
