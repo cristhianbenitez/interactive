@@ -24,10 +24,9 @@ route.use((req, res, next) => {
   next();
 });
 
-// Route for Previews
 route.get(
   '/',
   asyncHandler(async (req, res) => {
-    res.render('');
+    res.render('pages/home');
   })
 );

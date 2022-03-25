@@ -1,24 +1,17 @@
 {
   "name": "piperplate",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "app.js",
   "scripts": {
-    "backend:build": "node app.js --ext",
-    "backend:dev": "nodemon app.js",
-    "frontend:start": "npm run dev",
-    "frontend:dev": "webpack-dev-server --progress --config webpack.config.dev.js",
-    "build": "webpack --progress --config webpack.config.production.js",
-    "start": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" \"browser-sync start --config bs-config.js\" "
+    "start": "nodemon app.js  ",
+    "build": "webpack --progress --config webpack.config.production.js"
   },
   "author": "Cristhian Benitez",
   "license": "ISC",
   "devDependencies": {
     "@prettier/plugin-pug": "^1.20.0",
     "babel-loader": "^8.2.4",
-    "browser-sync": "^2.27.9",
     "clean-webpack-plugin": "^4.0.0",
-    "concurrently": "^7.0.0",
-    "connect-livereload": "^0.6.1",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
     "eslint": "^8.11.0",
@@ -34,7 +27,6 @@
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
-    "livereload": "^0.9.3",
     "mini-css-extract-plugin": "^2.6.0",
     "nodemon": "^2.0.15",
     "postcss-loader": "^6.2.1",
@@ -47,6 +39,7 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-middleware": "^5.3.1",
     "webpack-dev-server": "^4.7.4",
+    "webpack-hot-middleware": "^2.25.1",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
@@ -55,10 +48,11 @@
     "body-parser": "^1.19.2",
     "dotenv": "^16.0.0",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.3",
+    "express": "4.17.1",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "node-fetch-commonjs": "^3.1.1",
+    "nodemon": "^2.0.15",
     "serve-favicon": "^2.5.0"
   }
 }
